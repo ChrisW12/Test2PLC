@@ -1,0 +1,38 @@
+
+#Christopher White
+
+$q = 1;
+$p = 3;
+
+
+
+sub GetQ {
+return $q;
+}
+
+
+sub staticScope {
+    my $q = 2;
+        return GetQ();
+}
+
+
+
+
+
+sub GetP {
+    return $p;
+}
+
+
+sub dynamicScope {
+    local $p = 4;
+        return GetP();
+}
+
+
+
+print "static scope ", staticScope(), "\n";
+
+print "dynamic scope ", dynamicScope(), "\n";
+
