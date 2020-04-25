@@ -1,0 +1,71 @@
+// NUMBER3
+#include <iostream>
+#include <stdio.h>
+#include <time.h>
+
+void static_array(void);
+void stack_array(void);
+void heap_array(void);
+
+int main (void)
+{
+int i;
+int j;
+int k;
+
+//---------------------------------------------//
+
+clock_t start = clock();
+ 
+  for(i=0; i<150000; ++i){
+      static_array();
+}
+ 
+    clock_t stop = clock();
+    double Wholetime = ((double) (stop - start)) / CLOCKS_PER_SEC;
+ 
+    printf("It took %f seconds to execute statically \n", Wholetime);
+
+//---------------------------------------------//
+
+ start = clock();
+ 
+  for(i=0; i<150000; ++i){
+      stack_array();
+}
+ 
+    stop = clock();
+    double Wholetime2 = ((double) (stop - start)) / CLOCKS_PER_SEC;
+ 
+    printf("It took %f seconds to execute the stack \n", Wholetime2);
+
+
+//---------------------------------------------//
+
+start = clock();
+ 
+  for(i=0; i<100000; ++i){
+      heap_array();
+}
+ 
+    stop = clock();
+    double Wholetime3 = ((double) (stop - start)) / CLOCKS_PER_SEC;
+ 
+    printf("It took %f seconds to execute the heap \n", Wholetime3);
+
+
+}
+
+//---------------------------------------------//
+
+
+void static_array(void){
+static int my_arr1[200000];
+}
+
+void stack_array(void){
+int my_arr2[200000];
+}
+void heap_array(void){
+int *my_arr3 = (int *) malloc(200000 * sizeof(int));  
+}
